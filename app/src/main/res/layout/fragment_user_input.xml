@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@android:color/white"
+    tools:context="com.ait.aiscantestapp.MainActivity">
+
+    <ImageView
+        android:id="@+id/client_mask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/mask_client"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="aiScanDoc"
+        android:paddingTop="25dp"
+        android:paddingBottom="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"/>
+
+    <RadioGroup
+        android:layout_marginLeft="60dip"
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/textView1">
+
+        <RadioButton
+            android:id="@+id/sa_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Identity Document"
+            android:textSize="18sp"/>
+
+        <RadioButton
+            android:id="@+id/sa_id_card_a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Identity Document Card A"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/sa_id_card_b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Identity Document Card B"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/drivers_license"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Drivers License"
+            android:textSize="18sp"/>
+
+        <RadioButton
+            android:id="@+id/passport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Passport"
+            android:textSize="18sp"/>
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/et_uid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="enter aiUID"
+        android:layout_marginTop="84dip"
+        android:layout_marginLeft="60dip"
+        android:layout_marginRight="60dip"
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/button_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="START"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"  />
+
+
+</RelativeLayout>
