@@ -1,6 +1,7 @@
 package com.ait.aiscantestapp;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.TypedValue;
@@ -32,6 +34,7 @@ import com.ait.aiscan.manager.Exceptions.ServerRequestErrorException;
 import com.ait.aiscan.manager.api.EyeTPublic;
 import com.ait.aiscan.model.CaptureParameters;
 import com.ait.aiscan.model.IdentityFormat;
+import com.ait.aiscan.model.Result;
 import com.ait.aiscan.util.ArgDefs;
 import com.ait.aiscan.util.Constants;
 
@@ -377,10 +380,33 @@ public class user_input_fragment extends Fragment {
         if (requestCode == Constants.capture_activity_request) {
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
-                this.onResume();
+                Result result = ((Result) data.getParcelableExtra(ArgDefs.EXTRA_RESULT));
+                EyeTPublic.DocumentType type = ((EyeTPublic.DocumentType) data.getSerializableExtra(ArgDefs.EXTRA_DOCUMENT_TYPE));
+                IdentityFormat identity = ((IdentityFormat) data.getParcelableExtra(ArgDefs.EXTRA_IDENTITY));
+
+                loadscreen_result(identity, result, type, resultCode);
+
             }else if (resultCode == Activity.RESULT_CANCELED) {
                 this.onResume();
             }
         }
+    }
+
+    private void loadscreen_result(IdentityFormat identity, Result result, EyeTPublic.DocumentType type, int result_code) {
+        Intent intent = new Intent(getContext(), ResultActivity.class);
+        intent.putExtra(ArgDefs.EXTRA_IDENTITY, identity);
+        intent.putExtra(ArgDefs.EXTRA_RESULT, result);
+        intent.putExtra(ArgDefs.EXTRA_DOCUMENT_TYPE, type);
+        //intent.putExtra(ArgDefs.EXTRA_RESULT_CODE,result_code);
+
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(getContext());
+        // Adds the back stack
+        stackBuilder.addParentStack(ResultActivity.class);
+        // Adds the Intent to the top of the stack
+        stackBuilder.addNextIntent(intent);
+        // Gets a PendingIntent containing the entire back stack
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        stackBuilder.startActivities();
     }
 }

@@ -48,14 +48,7 @@
             android:id="@+id/sa_id_card_a"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Identity Document Card A"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:id="@+id/sa_id_card_b"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Identity Document Card B"
+            android:text="Identity Document Card"
             android:textSize="18sp" />
 
         <RadioButton

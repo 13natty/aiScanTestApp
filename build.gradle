@@ -16,6 +16,13 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
+        maven {
+            url "http://artifactory.sclera.io/artifactory/gradle-release-local"
+            credentials {
+                username 'nico'
+                password 'AP58sQDS9xbmMG6g4hfVnzo5jXj'
+            }
+            }
         flatDir {
             dirs 'libs'
         }
