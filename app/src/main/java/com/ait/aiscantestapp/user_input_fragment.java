@@ -361,12 +361,9 @@ public class user_input_fragment extends Fragment {
                 dt = EyeTPublic.DocumentType.SA_ID_CARD_A;
                 break;
             case 2:
-                dt = EyeTPublic.DocumentType.SA_ID_CARD_B;
-                break;
-            case 3:
                 dt = EyeTPublic.DocumentType.SA_DRIVERS;
                 break;
-            case 4:
+            case 3:
                 dt = EyeTPublic.DocumentType.SA_PASSPORT;
                 break;
         }
